@@ -13,6 +13,7 @@
   <p>Keep calm and code on!</p>
 </template>
 
+
 <script setup>
 import PersonalRouter from "./PersonalRouter.vue";
 import {ref} from "vue";
