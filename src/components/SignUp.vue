@@ -1,13 +1,13 @@
 <template>
   <div>Sign Up</div>
-  <form @submit.prevent="userStore.signUp(email,password)">
+  <form @submit.prevent="userStore.signUp(email,password,confirmPassword)">
     <p v-if="userStore.error">{{userStore.error}}</p>
     <input type="text" v-model="email"  placeholder="email">
     <input type="password" v-model="password"  placeholder="password">
+    <input type="password" v-model="confirmPassword"  placeholder="confirm password">
     <button type="submit">Register</button>
   </form>
- <h1>User value:{{email}}</h1>
- <h1>Password value:{{password}}</h1>
+
 
   <PersonalRouter :route="route" :buttonText="buttonText" />
   
@@ -31,6 +31,7 @@ const buttonText = "Test the Sign In Route";
 
 const email = ref(null);
 const password = ref(null);
+const confirmPassword = ref(null);
 //const confirmPassword = ref(null);
 
 // Error Message

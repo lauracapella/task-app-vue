@@ -1,10 +1,11 @@
 <template>
   <div>Sign In </div>
-  <!-- <form >
-    <input type="text" placeholder="email">
-    <input type="password" placeholder="password">
-    <button>Login</button>
-  </form> -->
+   <form @submit.prevent="this.signIn()">
+    <input type="text" v-model="email"  placeholder="email">
+    <input type="password" v-model="password"  placeholder="password">
+    <button type="submit">Login</button>
+  </form>
+  <h1>{{email.value}}</h1>
   <PersonalRouter :route="route" :buttonText="buttonText" />
   <p>Time to build up the Final Project!</p>
   <p class="wu-text">Wu Tang Forever</p>
@@ -44,10 +45,14 @@ const signIn = async () => {
     // calls the user store and send the users info to backend to logIn
     await useUserStore().signIn(email.value, password.value);
     // redirects user to the homeView
+    console.log('login hola')
+
     redirect.push({ path: "/" });
   } catch (error) {
     // displays error message
     errorMsg.value = `Error: ${error.message}`;
+        console.log('login nain')
+
     // hides error message
     setTimeout(() => {
       errorMsg.value = null;
