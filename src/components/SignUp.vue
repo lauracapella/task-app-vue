@@ -1,12 +1,14 @@
 <template>
   <div>Sign Up</div>
-  <form @submit.prevent="handleSubmit">
-    <input type="email" v-model="email"  placeholder="email">
+  <form @submit.prevent="userStore.signUp(email,password)">
+    <p v-if="userStore.error">{{userStore.error}}</p>
+    <input type="text" v-model="email"  placeholder="email">
     <input type="password" v-model="password"  placeholder="password">
-    <input type="password" v-model="confirmPassword" placeholder="confrim password">
-    <button>Register</button>
+    <button type="submit">Register</button>
   </form>
- 
+ <h1>User value:{{email}}</h1>
+ <h1>Password value:{{password}}</h1>
+
   <PersonalRouter :route="route" :buttonText="buttonText" />
   
   <p>Good Music, Patience and a lot effort</p>
@@ -16,16 +18,20 @@
 
 <script setup>
 import PersonalRouter from "./PersonalRouter.vue";
+//importación de stores de pinia
 import {ref} from "vue";
+import { useUserStore } from "../stores/user.js";
+//variable para apuntar al store
+const userStore = useUserStore();
 // Route Variables
 const route = "/auth/login";
 const buttonText = "Test the Sign In Route";
 
 // Input Fields
 
-const email = ref(null)
-const password = ref(null)
-const confirmPassword = ref(null)
+const email = ref(null);
+const password = ref(null);
+//const confirmPassword = ref(null);
 
 // Error Message
 

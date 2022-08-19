@@ -1,11 +1,10 @@
 <template>
   <div>Sign In </div>
-  <form >
+  <!-- <form >
     <input type="text" placeholder="email">
     <input type="password" placeholder="password">
     <button>Login</button>
-  </form>
-  <p>Email value: {{emailme}}</p>
+  </form> -->
   <PersonalRouter :route="route" :buttonText="buttonText" />
   <p>Time to build up the Final Project!</p>
   <p class="wu-text">Wu Tang Forever</p>

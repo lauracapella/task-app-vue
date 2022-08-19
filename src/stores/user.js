@@ -3,6 +3,7 @@ import { supabase } from "../supabase";
 export const useUserStore = defineStore("user", {
   state: () => ({
     user: null,
+    error: null,
   }),
   actions: {
     async fetchUser() {
@@ -14,10 +15,15 @@ export const useUserStore = defineStore("user", {
         email: email,
         password: password,
       });
-      if (error) throw error;
+      if (error) {
+        this.error = error.message
+        throw error;
+        
+      };
       if (user) {
         this.user = user;
-        console.log(this.user);
+
+      console.log(this.user);
       }
     },
   },
