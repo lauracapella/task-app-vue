@@ -23,9 +23,16 @@ export const useUserStore = defineStore("user", {
       };
       if (user) {
         if (password === confirmPassword){
-        this.user = user;
+          this.user = user;
         //console.log(this.user);
-    }
+        console.log('registered')
+        
+
+        }else{
+          this.error = 'Confirm password is not equal'
+          throw error;
+          console.log('pasword not match')
+        }
       }
     },
 
