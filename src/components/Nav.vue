@@ -1,5 +1,25 @@
 <template>
-  <div>Nav Component</div>
+  <nav>
+    <!-- Desktop menu -->
+    <div class="bg-indigo-600">
+        <div class="flex justify-between">
+          <!-- Menu items -->
+          <div class="flex-item center px-2 py-5">
+            LOGO
+          </div>
+           
+          
+          <!-- Login section   -->
+          <div class="flex flex-item center px-2 py-5">
+            <p class="mr-5">Wellcome <span class="font-bold">Username!</span>  </p>
+            <button class="mr-5">LogOut</button>
+          </div>
+       
+
+        </div>
+      </div>
+
+  </nav>
 </template>
 
 <script setup>

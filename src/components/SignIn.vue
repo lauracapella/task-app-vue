@@ -1,15 +1,32 @@
 <template>
-  <div>Sign In </div>
-   <form @submit.prevent="this.signIn()">
-    <input type="text" v-model="email"  placeholder="email">
-    <input type="password" v-model="password"  placeholder="password">
-    <button type="submit">Login</button>
+<div class="max-w-screen-sm mx-auto px-4 py-10">
+  <div class="text-3xl text-ta-light-main mb-4">Sign In </div>
+   <form @submit.prevent="this.signIn()" class="p-8 flex flex-col bg-light-grey rounded-mb shadow-lg">
+     <div class="flex flex-col mb-2">
+      <label for="emaillogin" class="mb-1 text-sm">Email</label>
+      <input type="text" v-model="email" id="emaillogin" required class="p-2 focus:outline-none">
+   </div>
+   <div class="flex flex-col mb-2">
+      <label for="passlogin" class="mb-1 text-sm">Password</label>
+        <input type="password" v-model="password" required id="passlogin" class="p-2 focus:outline-none">
+      </div>
+   <button type="submit" class="mt-6 py-2 px-6 rounded-sm self-start text-sm text-white bg-at-light-green duration-200 border-solid border-2 border-transparent hover:border-white hover:bg-white  hover:text-at-light-grey">Register</button>
+
   </form>
-  <h1>{{email.value}}</h1>
-  <PersonalRouter :route="route" :buttonText="buttonText" />
-  <p>Time to build up the Final Project!</p>
-  <p class="wu-text">Wu Tang Forever</p>
+   <div class="text-sm mt-6 text-center">
+    <PersonalRouter :route="route" :buttonText="buttonText" />
+   </div>
+</div>
 </template>
+
+
+
+
+
+
+
+
+
 
 <script setup>
 import { ref, computed } from "vue";
@@ -21,7 +38,7 @@ import { storeToRefs } from "pinia";
 
 // Route Variables
 const route = "/auth/sign-up";
-const buttonText = "Test the Sign Up Route";
+const buttonText = "Do you want to register?";
 
 // Input Fields
 const email = ref("");

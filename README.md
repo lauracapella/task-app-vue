@@ -40,30 +40,32 @@ npm run dev
 npm run build
 ```
 
-### Good Music is always key!
+### Task App!
 
+This is a web app developed with Vue 3, composition API, Pinia as a state management tool, vue router, vite and lastly Supabase running on the backend.
+
+The main propouse of this app is helping people organaize their tastks giving her the chance to make list under they user progile space.
+
+### Friday 19
+
+Starting the project.
 ```sh
-Wu Tang Clan
-A tribe called quest
-Kendrick Lamar
-Outkast
-Dr. Dre
-N.W.A
-De La Soul 
-Ms. Lauryn Hill
-J. Cole 
-Guts
-Naughty By Nature
-People under the stairs
-Nujabes
-NAS
-KRS-One
-The Pharcyde
-Jurassic 5
-Gang starr
-Jay Z
-Mobb Depp
-Common
-Lil Supa
+        - Set up project
+        - Connecting to Supabase
+        - Understaning the structure
+        - Installing Tailwind
+        - User Sign Up
+        - User Sign In
+        - Login layout
 ```
-[Hip Hop Spotify Playlist](https://open.spotify.com/playlist/4vKftyhS1gQovakehVcq1u?si=a7a119382dfe40da)
+
+### Monday 22
+
+Finishing User Registration / Login / Logout.
+```sh
+        - Correct routes with confirm password
+        - Logout
+        - Navbar
+        - Footer
+        - Layout Form new task
+```
