@@ -29,14 +29,10 @@ const errorMessage = "Give me a task title, please"
 
 
 const addTask = () => {
-  console.log(null === '')
   if (title.value === null || title.value === ""){
      errorWhitoutTitle.value = true;
-     console.log(errorWhitoutTitle)
-       
   } else {
      useTaskStore().addTask(title.value, description.value);
-      console.log(errorWhitoutTitle)
   }
   return errorWhitoutTitle;
 }

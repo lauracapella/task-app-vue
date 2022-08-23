@@ -4,8 +4,8 @@
     <div class="bg-taLightMain">
         <div class="flex justify-between">
           <!-- Menu items -->
-          <div class="flex-item center px-2 py-5">
-            LOGO
+          <div class="flex-item center px-2 py-5 text-white font-semibold">
+            TasKo
           </div>
          
            

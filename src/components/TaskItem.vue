@@ -5,7 +5,9 @@
   <div v-for="tarea in task.tasks" :key="tarea" class="border-2 m-5">
     <div class="font-bold">{{tarea.title}}</div>
     <div>{{tarea.description}} </div>
-    <button class="text-red-500" @click="useTaskStore().deleteTask(tarea.id)">borrar</button>
+    <button class="text-red-500 m-5" @click="useTaskStore().deleteTask(tarea.id)">Delete</button>
+    <button class="text-red-500 m-5" @click="useTaskStore().editTask(tarea.title,tarea.id)">Edit</button>
+
   </div>
 
 </div>
