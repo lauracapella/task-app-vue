@@ -1,14 +1,14 @@
 <template>
-    
-    <form class="flex flex-col items-center p-5" @submit.prevent="addTask" >
-      <label for="title">Title</label>
-      <input type="text" placeholder="Title here" id="title" v-model="title">
-      <label for="description">Description</label>
-      <input type="text" placeholder="Description here" id="description" v-model="description">
-      <button class="bg-indigo-500 text-white p-5 m-5">Add task</button>
+    <div class="m-5">
+    <form class="flex flex-col items-center p-5 mb-2 text-center" @submit.prevent="addTask" >
+      <label for="title" class="mb-1 text-sm">Title</label>
+      <input type="text" placeholder="Title here" id="title" v-model="title" class="p-2 focus:outline-none">
+      <label for="description" class="mb-1 text-sm">Description</label>
+      <input type="text" placeholder="Description here" id="description" v-model="description" class="p-2 focus:outline-none">
+      <button class="mt-6 py-2 px-6 rounded-sm  text-sm text-white bg-taLightMain duration-200 border-solid border-2 border-transparent    items-center">Add task</button>
     </form>
  <div v-if="errorWhitoutTitle" class="text-red-500">{{errorMessage}}</div>
- 
+ </div>
 </template>
 
 <script setup>
@@ -30,7 +30,7 @@ const errorMessage = "Give me a task title, please"
 
 const addTask = () => {
   console.log(null === '')
-  if (title.value === false){
+  if (title.value === null || title.value === ""){
      errorWhitoutTitle.value = true;
      console.log(errorWhitoutTitle)
        
@@ -45,4 +45,3 @@ const addTask = () => {
 
 <style></style>
 
-// if (title.value === null || title.value === ""){

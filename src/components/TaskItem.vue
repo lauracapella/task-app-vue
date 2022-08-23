@@ -2,7 +2,11 @@
 <div class="text-center">
   <div>Task Item Component</div>
   
-  <div v-for="tarea in task.tasks" :key="tarea" class="bg-light-grey-500">{{tarea.title}}<br />{{tarea.description}} </div>
+  <div v-for="tarea in task.tasks" :key="tarea" class="border-2 m-5">
+    <div class="font-bold">{{tarea.title}}</div>
+    <div>{{tarea.description}} </div>
+    <button class="text-red-500" @click="useTaskStore().deleteTask(tarea.id)">borrar</button>
+  </div>
 
 </div>
 </template>
