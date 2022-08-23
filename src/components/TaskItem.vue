@@ -1,11 +1,29 @@
 <template>
+<div class="text-center">
   <div>Task Item Component</div>
+  
+  <div v-for="tarea in task.tasks" :key="tarea" class="bg-light-grey-500">{{tarea.title}}<br />{{tarea.description}} </div>
+
+</div>
 </template>
 
 <script setup>
+import {ref} from "vue"
+import {useTaskStore} from "../stores/task.js"
 // const emit = defineEmits([
 //   ENTER-EMITS-HERE
 // ])
+//const tasks = ref ([])
+const title = ref("");
+const description = ref("");
+const task = useTaskStore();
+console.log(task.fetchTasks());
+
+/* props:{
+  task:Object;
+} */
+
+
 
 // const props = defineProps(["ENTER-PROP-HERE"]);
 </script>
