@@ -69,3 +69,13 @@ Finishing User Registration / Login / Logout.
         - Footer
         - Layout Form new task
 ```
+
+### Tuesday 23
+
+Tasks
+```sh
+        - Add new task to supabase
+        - Print task from supabase
+        - Loop array of tasks
+        - Styles to tasks
+```

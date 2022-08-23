@@ -1,11 +1,21 @@
 <template>
   <Nav/>
+
+  <div class="text-center bg-gray-100">
+    <h1 class="text-4xl pt-5">Add a new Task</h1>
+    <h3 class="text-xl pt-3">Keep your life organized, prepare for a trip ? Start here</h3>
+   <NewTask />
+   <TaskItem />
+  </div>
+
   <Footer/>
+
 </template>
 
 <script setup>
 import Nav from "../components/Nav.vue"
 import Footer from "../components/Footer.vue"
+import NewTask from "../components/NewTask.vue"
 
 </script>
 

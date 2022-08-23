@@ -10,29 +10,16 @@ export const useUserStore = defineStore("user", {
       const user = await supabase.auth.user();
       this.user = user;
     },
-    async signUp(email, password, confirmPassword) {
+    async signUp(email, password) {
       const { user, error } = await supabase.auth.signUp({
         email: email,
         password: password,
-        confirmPassword: confirmPassword,
       });
       if (error) {
-        this.error = error.message
         throw error;
-        
-      };
+      }
       if (user) {
-        if (password === confirmPassword){
-          this.user = user;
-        //console.log(this.user);
-        console.log('registered')
-        
-
-        }else{
-          this.error = 'Confirm password is not equal'
-          throw error;
-          console.log('pasword not match')
-        }
+        this.user = user;
       }
     },
 
@@ -42,26 +29,28 @@ export const useUserStore = defineStore("user", {
         password: password,
       });
       if (error) {
-        this.error = error.message
+        this.error = error.message;
         throw error;
-        
-      };
+      }
       if (user) {
         this.user = user;
         //console.log(this.user);
-  
       }
     },
 
+    async signOut(email, password) {
+      console.log("signOut del store click");
+      const { error } = await supabase.auth.signOut();
+    },
 
     persist: {
       enabled: true,
       strategies: [
         {
-          key: 'user',
-          storage: localStorage
-        }
-      ]
+          key: "user",
+          storage: localStorage,
+        },
+      ],
     },
   },
 });

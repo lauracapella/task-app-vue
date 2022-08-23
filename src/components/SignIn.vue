@@ -1,7 +1,7 @@
 <template>
 <div class="max-w-screen-sm mx-auto px-4 py-10">
   <div class="text-3xl text-ta-light-main mb-4">Sign In </div>
-   <form @submit.prevent="this.signIn()" class="p-8 flex flex-col bg-light-grey rounded-mb shadow-lg">
+   <form @submit.prevent="this.signIn()" class="p-8 flex flex-col bg-grisClaro rounded-mb shadow-lg">
      <div class="flex flex-col mb-2">
       <label for="emaillogin" class="mb-1 text-sm">Email</label>
       <input type="text" v-model="email" id="emaillogin" required class="p-2 focus:outline-none">
@@ -10,7 +10,7 @@
       <label for="passlogin" class="mb-1 text-sm">Password</label>
         <input type="password" v-model="password" required id="passlogin" class="p-2 focus:outline-none">
       </div>
-   <button type="submit" class="mt-6 py-2 px-6 rounded-sm self-start text-sm text-white bg-at-light-green duration-200 border-solid border-2 border-transparent hover:border-white hover:bg-white  hover:text-at-light-grey">Register</button>
+   <button type="submit" class="mt-6 py-2 px-6 rounded-sm self-start text-sm text-white bg-taLightMain duration-200 border-solid border-2 border-transparent hover:border-white hover:bg-white  hover:text-at-light-grey">Register</button>
 
   </form>
    <div class="text-sm mt-6 text-center">
@@ -18,13 +18,6 @@
    </div>
 </div>
 </template>
-
-
-
-
-
-
-
 
 
 
@@ -78,9 +71,7 @@ const signIn = async () => {
 </script>
 
 <style>
-.wu-text {
-  color: black;
-}
+
 
 .form {
   display: flex;
