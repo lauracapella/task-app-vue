@@ -4,11 +4,11 @@
   <div class="text-center bg-gray-100">
     <h1 class="text-4xl pt-5">Add a new Task</h1>
     <h3 class="text-xl pt-3">Keep your life organized, prepare for a trip ? Start here</h3>
-   <NewTask />
+   <NewTask @add-task="addTask"/>
   </div>
 
   <div>
-    <TaskItem :task=task />
+    <TaskItem v-for="task in supabaseTasks" :key="task.id" :task="task" @add-toogle="addToggle" @delete-task="deleteTask" />
     </div>
   <Footer/>
 
@@ -19,6 +19,35 @@ import Nav from "../components/Nav.vue"
 import Footer from "../components/Footer.vue"
 import NewTask from "../components/NewTask.vue"
 import TaskItem from "../components/TaskItem.vue"
+import {ref} from "vue"; 
+import {useTaskStore} from "../stores/task.js"
+
+const supabaseTasks = ref([]);
+
+const getTasks = async () => {
+  supabaseTasks.value = await useTaskStore().fetchTasks();
+  //console.log('getTasks',  supabaseTasks.value)
+};
+
+getTasks();
+
+const addTask = async (laura, aleix) => {
+  await useTaskStore().addTask(laura, aleix);
+  getTasks();
+};
+
+
+
+const addToggle = async (is_complete, id) => {
+  await useTaskStore().tooggleTask(is_complete, id);
+  getTasks();
+
+};
+
+const deleteTask = async (id) => {
+  await useTaskStore().deleteTask(id);
+  getTasks();
+};
 
 
 

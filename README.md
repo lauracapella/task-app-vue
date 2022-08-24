@@ -79,3 +79,13 @@ Tasks
         - Loop array of tasks
         - Styles to tasks
 ```
+
+### Wednesday 24
+
+Tasks
+```sh
+        - Styles to tasks
+        - Edit tasks
+        - toggle task
+        - refresh contents automatically
+```

@@ -1,15 +1,19 @@
 <template>
 <div class="text-center">
-  <div>Task Item Component</div>
-  
-  <div v-for="tarea in task.tasks" :key="tarea" class="border-2 m-5">
-    <div class="font-bold">{{tarea.title}}</div>
-    <div>{{tarea.description}} </div>
-    <button class="text-red-500 m-5" @click="useTaskStore().deleteTask(tarea.id)">Delete</button>
-    <button class="text-red-500 m-5" @click="useTaskStore().editTask(tarea.title,tarea.id)">Edit</button>
+    <div class="font-bold" @click="addToggle">{{task.title}}</div>
+    <div>{{task.description}} </div>
+    <p v-if="is_complete">Is complete</p>
+ 
+ <button class="text-red-500 m-5" @click="deleteTask">Delete</button>
+<!--  <button class="text-red-500 m-5" @click="useTaskStore().editTask(task.title,task.id)">Edit</button>
+ -->  <button class="text-red-500 m-5" @click="editTask">Edit</button>
 
-  </div>
-
+ <div v-if="editChecked" >
+   <form>
+     <input type="text" placeholder="nuevo titulo"/>
+     <input type="text" placeholder="nueva descripcion"/>
+   </form>
+ </div>
 </div>
 </template>
 
@@ -22,16 +26,37 @@ import {useTaskStore} from "../stores/task.js"
 //const tasks = ref ([])
 const title = ref("");
 const description = ref("");
-const task = useTaskStore();
-console.log(task.fetchTasks());
+const id=ref(props.task.id);
+const editChecked = ref(false);
 
-/* props:{
-  task:Object;
-} */
-
-
+let is_complete = ref(props.task.is_complete);
 
 // const props = defineProps(["ENTER-PROP-HERE"]);
+const props = defineProps({
+  task:Object,
+})
+
+
+//Definimos los emits que vienen del home view
+const emit = defineEmits(['delete-task', 'add-toogle'])
+
+//Definimos las funciones que accionan los emits
+const addToggle = () => {
+  is_complete.value = !is_complete.value
+  emit("add-toogle", is_complete.value, id.value)
+}; 
+
+
+const deleteTask = () => {
+  emit("delete-task", props.task.id)
+};
+
+const editTask = () => {
+  editChecked.value = !editChecked.value
+};
+
+
+
 </script>
 
 <style></style>

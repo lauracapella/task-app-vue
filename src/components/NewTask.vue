@@ -16,7 +16,7 @@ import { ref } from "vue";
 import { useTaskStore } from "../stores/task.js";
 
 // constant to save a variable that define the custom event that will be emitted to the homeView
-
+const emit = defineEmits(["add-task"])
 // constant to save a variable that holds the value of the title input field of the new task
 const title = ref(null);
 // constant to save a variable that holds the value of the description input field of the new task
@@ -29,13 +29,16 @@ const errorMessage = "Give me a task title, please"
 
 
 const addTask = () => {
+   //if(title.value){
   if (title.value === null || title.value === ""){
-     errorWhitoutTitle.value = true;
+      errorWhitoutTitle.value = true;
   } else {
-     useTaskStore().addTask(title.value, description.value);
+     emit("add-task", title.value, description.value)
+     title.value = "";
+     description.value = "";
   }
   return errorWhitoutTitle;
-}
+};
 
 </script>
 

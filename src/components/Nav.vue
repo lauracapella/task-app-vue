@@ -5,7 +5,7 @@
         <div class="flex justify-between">
           <!-- Menu items -->
           <div class="flex-item center px-2 py-5 text-white font-semibold">
-            TasKo
+            TaskApp
           </div>
          
            
@@ -44,7 +44,7 @@ const redirect = useRouter()
 const signOut = async () => {
   await useUserStore().signOut();
   redirect.push({path: "/auth/login"})
- }
+ };
 </script>
 
 <style></style>
