@@ -10,7 +10,7 @@
       <label for="passlogin" class="mb-1 text-sm">Password</label>
         <input type="password" v-model="password" required id="passlogin" class="p-2 focus:outline-none">
       </div>
-   <button type="submit" class="mt-6 py-2 px-6 rounded-sm self-start text-sm text-white bg-taLightMain duration-200 border-solid border-2 border-transparent hover:border-white hover:bg-white  hover:text-at-light-grey">Register</button>
+   <button type="submit" class="mt-6 py-2 px-6 self-start text-sm text-white bg-taLightMain duration-200  border-transparent hover:bg-gray-500  hover:text-at-light-grey font-bold rounded-full w-full">Sign In</button>
 
   </form>
    <div class="text-sm mt-6 text-center">

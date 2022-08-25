@@ -1,13 +1,13 @@
 <template>
     <div class="m-5">
-    <form class="flex flex-col items-center p-5 mb-2 text-center" @submit.prevent="addTask" >
-      <label for="title" class="mb-1 text-sm">Title</label>
-      <input type="text" placeholder="Title here" id="title" v-model="title" class="p-2 focus:outline-none">
-      <label for="description" class="mb-1 text-sm">Description</label>
-      <input type="text" placeholder="Description here" id="description" v-model="description" class="p-2 focus:outline-none">
-      <button class="mt-6 py-2 px-6 rounded-sm  text-sm text-white bg-taLightMain duration-200 border-solid border-2 border-transparent    items-center">Add task</button>
+    <form class="flex flex-col items-center p-5 mb-2 text-center " @submit.prevent="addTask" >
+      <!-- <label for="title" class="mb-1 text-sm">Title</label> -->
+      <input type="text" placeholder="Title here" id="title" v-model="title" class="p-3 m-2 focus:outline-none rounded-full w-full text-center placeholder-taLightMain">
+      <!-- <label for="description" class="mb-1 text-sm">Description</label> -->
+      <input type="text" placeholder="Description here" id="description" v-model="description" class="p-3 m-2 focus:outline-none rounded-full w-full text-center placeholder-taLightMain">
+      <button class="mt-6 p-3 px-6 self-start text-sm text-white bg-taLightMain duration-200  border-transparent hover:bg-gray-500  hover:text-at-light-grey font-bold rounded-full w-full">Add Task</button>
     </form>
- <div v-if="errorWhitoutTitle" class="text-red-500">{{errorMessage}}</div>
+ <div v-if="errorWhitoutTitle" class="text-red-500 mb-5 pb-5">{{errorMessage}}</div>
  </div>
 </template>
 
@@ -32,6 +32,8 @@ const addTask = () => {
    //if(title.value){
   if (title.value === null || title.value === ""){
       errorWhitoutTitle.value = true;
+
+      //setTimeout(() => this.basketAddSuccess = false, 2000);
   } else {
      emit("add-task", title.value, description.value)
      title.value = "";

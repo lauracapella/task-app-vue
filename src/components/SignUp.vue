@@ -55,7 +55,7 @@
 
       <button
         type="submit"
-        class="mt-6 py-2 px-6 rounded-sm self-start text-sm text-white bg-taLightMain duration-200 border-solid border-2 border-transparent hover:border-white hover:bg-white hover:text-at-light-grey"
+        class="mt-6 py-2 px-6 self-start text-sm text-white bg-taLightMain duration-200  border-transparent hover:bg-gray-500  hover:text-at-light-grey font-bold rounded-full w-full"
       >
         Register
       </button>

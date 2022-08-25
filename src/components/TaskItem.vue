@@ -1,20 +1,25 @@
 <template>
-<div class="text-center">
-    <div class="font-bold" @click="addToggle">{{task.title}}</div>
-    <div>{{task.description}} </div>
-    <p v-if="is_complete">Is complete</p>
- 
- <button class="text-red-500 m-5" @click="deleteTask">Delete</button>
-<!--  <button class="text-red-500 m-5" @click="useTaskStore().editTask(task.title,task.id)">Edit</button>
- -->  <button class="text-red-500 m-5" @click="editTask">Edit</button>
+<div :class="{ completed_style: is_complete }" class=" text-center m-5 p-5 border-2" >
+  
+    <div class="font-bold mt-2 mb-2" @click="showToolsHandler">{{task.title}}</div>
+    <div >{{task.description}} </div>
 
- <div v-if="editChecked" >
-   <form>
-     <input type="text" placeholder="nuevo titulo"/>
-     <input type="text" placeholder="nueva descripcion"/>
-   </form>
+    <!-- <p v-if="is_complete">Is complete</p> -->
+  <div v-if="showTools" class="inline-flex m-5">
+    <button class="bg-gray-100 hover:bg-gray-200 text-gray-500 py-2 px-4 rounded-l" @click="addToggle">Done</button>
+    <button class="bg-gray-100 hover:bg-gray-200 text-gray-500 py-2 px-4 " @click="deleteTask">Delete</button>
+    <button class="bg-gray-100 hover:bg-gray-200 text-gray-500 py-2 px-4 rounded-r" @click="openEditTask">Edit</button>
+  </div>
+
+  <div v-if="editChecked"  >
+    <form @submit.prevent="editTask" class="flex flex-col">
+      <input type="text" v-model="titleEdited" placeholder="Nuevo titulo" class="p-2 m-2 border-2 rounded-full text-center placeholder-taLightMain"/>
+      <input type="text" v-model="descriptionEdited" placeholder="Nueva descripcion" class="p-2 m-2 border-2 rounded-full  text-center placeholder-taLightMain"/>
+      <button class="mt-6 p-3 px-6 self-start text-sm text-white bg-taLightMain duration-200  border-transparent hover:bg-gray-500  hover:text-at-light-grey rounded-full">Edit Task</button>
+    </form>
  </div>
-</div>
+ </div>
+
 </template>
 
 <script setup>
@@ -28,6 +33,16 @@ const title = ref("");
 const description = ref("");
 const id=ref(props.task.id);
 const editChecked = ref(false);
+const titleEdited = ref ("");
+const descriptionEdited = ref("");
+let showTools = ref(false);
+
+const showToolsHandler = () => {
+  showTools.value = !showTools.value
+  editChecked.value = false;
+}
+
+
 
 let is_complete = ref(props.task.is_complete);
 
@@ -38,7 +53,7 @@ const props = defineProps({
 
 
 //Definimos los emits que vienen del home view
-const emit = defineEmits(['delete-task', 'add-toogle'])
+const emit = defineEmits(['delete-task', 'add-toogle', 'edit-task'])
 
 //Definimos las funciones que accionan los emits
 const addToggle = () => {
@@ -51,15 +66,29 @@ const deleteTask = () => {
   emit("delete-task", props.task.id)
 };
 
+const openEditTask = () => {
+  editChecked.value = !editChecked.value
+  titleEdited.value = props.task.title;
+  descriptionEdited.value = props.task.description
+};
+
 const editTask = () => {
+  const editValues = {
+    newTitle: titleEdited.value,
+    newDescription: descriptionEdited.value,
+    oldIdValue: props.task
+  }
+  emit('edit-task', editValues)
   editChecked.value = !editChecked.value
 };
 
-
-
 </script>
 
-<style></style>
+<style>
+.completed_style{
+ background: rgb(231, 246, 239);
+}
+</style>
 
 <!-- 
 **Hints**

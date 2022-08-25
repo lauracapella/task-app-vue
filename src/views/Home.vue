@@ -2,13 +2,13 @@
   <Nav/>
 
   <div class="text-center bg-gray-100">
-    <h1 class="text-4xl pt-5">Add a new Task</h1>
-    <h3 class="text-xl pt-3">Keep your life organized, prepare for a trip ? Start here</h3>
+    <h1 class="text-4xl pt-5 text-gray-500">Add a new Task</h1>
+    <h3 class="text-xl pt-3 text-gray-500">Keep your life organized, prepare for a trip? Start here</h3>
    <NewTask @add-task="addTask"/>
   </div>
 
   <div>
-    <TaskItem v-for="task in supabaseTasks" :key="task.id" :task="task" @add-toogle="addToggle" @delete-task="deleteTask" />
+    <TaskItem v-for="task in supabaseTasks" :key="task.id" :task="task" @add-toogle="addToggle" @delete-task="deleteTask" @edit-task="editTask" />
     </div>
   <Footer/>
 
@@ -31,24 +31,31 @@ const getTasks = async () => {
 
 getTasks();
 
+// creamos las funciones que llaman a funciones del store y se activan en los componentes con los emits
 const addTask = async (laura, aleix) => {
   await useTaskStore().addTask(laura, aleix);
   getTasks();
 };
 
-
-
 const addToggle = async (is_complete, id) => {
   await useTaskStore().tooggleTask(is_complete, id);
   getTasks();
-
 };
+
+
 
 const deleteTask = async (id) => {
   await useTaskStore().deleteTask(id);
   getTasks();
 };
 
+const editTask = async (task) => {
+  const newTitle = task.newTitle;
+  const newDescription = task.newDescription;
+  const taskId = task.oldIdValue.id
+  await useTaskStore().editTask(newTitle, newDescription, taskId);
+  getTasks();
+};
 
 
 </script>
