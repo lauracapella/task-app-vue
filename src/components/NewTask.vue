@@ -32,14 +32,17 @@ const addTask = () => {
    //if(title.value){
   if (title.value === null || title.value === ""){
       errorWhitoutTitle.value = true;
-
-      //setTimeout(() => this.basketAddSuccess = false, 2000);
+      setTimeout(() => deletMsg(), 5000);
   } else {
      emit("add-task", title.value, description.value)
      title.value = "";
      description.value = "";
   }
   return errorWhitoutTitle;
+};
+
+const deletMsg = () =>{
+   errorWhitoutTitle.value = false;
 };
 
 </script>
