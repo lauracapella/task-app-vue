@@ -4,7 +4,7 @@
   <div class="text-center bg-gray-100">
     <h1 class="text-4xl pt-5 text-gray-500">Add a new Task</h1>
     <h3 class="text-xl pt-3 text-gray-500">
-      Keep your life organized, prepare for a trip? Start here
+      {{time}}
     </h3>
     <NewTask @add-task="addTask" />
   </div>
@@ -29,7 +29,9 @@ import NewTask from "../components/NewTask.vue";
 import TaskItem from "../components/TaskItem.vue";
 import { ref } from "vue";
 import { useTaskStore } from "../stores/task.js";
+import moment from "moment";
 
+const time = moment().format("MMM Do YY");
 const supabaseTasks = ref([]);
 
 const getTasks = async () => {

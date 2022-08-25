@@ -1,55 +1,66 @@
 <template>
-  <div
-    :class="{ completed_style: is_complete }"
-    class="text-center m-5 p-5 border-2"
-  >
-    <div class="font-bold mt-2 mb-2" @click="showToolsHandler">
-      {{ task.title }}
-    </div>
-    <div>{{ task.description }}</div>
+  <div class="flex flex-col items-center">
+    <div
+      :class="{ completed_style: is_complete }"
+      class="text-center m-5 border-2block p-6 max-w-sm rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+    >
+      <h5
+        @click="showToolsHandler"
+        class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+      >
+        {{ task.title }}
+      </h5>
+      <p
+        @click="showToolsHandler"
+        class="font-normal text-gray-700 dark:text-gray-400"
+      >
+        {{ task.title }}
+      </p>
 
-    <!-- <p v-if="is_complete">Is complete</p> -->
-    <div v-if="showTools" class="inline-flex m-5">
-      <button
-        class="bg-gray-100 hover:bg-gray-200 text-gray-500 py-2 px-4 rounded-l"
-        @click="addToggle"
-      >
-        Done
-      </button>
-      <button
-        class="bg-gray-100 hover:bg-gray-200 text-gray-500 py-2 px-4"
-        @click="deleteTask"
-      >
-        Delete
-      </button>
-      <button
-        class="bg-gray-100 hover:bg-gray-200 text-gray-500 py-2 px-4 rounded-r"
-        @click="openEditTask"
-      >
-        Edit
-      </button>
-    </div>
-
-    <div v-if="editChecked">
-      <form @submit.prevent="editTask" class="flex flex-col">
-        <input
-          type="text"
-          v-model="titleEdited"
-          placeholder="Nuevo titulo"
-          class="p-2 m-2 border-2 rounded-full text-center placeholder-taLightMain"
-        />
-        <input
-          type="text"
-          v-model="descriptionEdited"
-          placeholder="Nueva descripcion"
-          class="p-2 m-2 border-2 rounded-full text-center placeholder-taLightMain"
-        />
+      <!-- <p v-if="is_complete">Is complete</p> -->
+      <div v-if="showTools" class="inline-flex m-5">
         <button
-          class="mt-6 p-3 px-6 self-start text-sm text-white bg-taLightMain duration-200 border-transparent hover:bg-gray-500 hover:text-at-light-grey rounded-full"
+          class="bg-gray-100 hover:bg-gray-200 text-gray-500 py-2 px-4 rounded-l"
+          @click="addToggle"
         >
-          Edit Task
+          Done
         </button>
-      </form>
+        <button
+          class="bg-gray-100 hover:bg-gray-200 text-gray-500 py-2 px-4"
+          @click="deleteTask"
+        >
+          Delete
+        </button>
+        <button
+          class="bg-gray-100 hover:bg-gray-200 text-gray-500 py-2 px-4 rounded-r"
+          @click="openEditTask"
+        >
+          Edit
+        </button>
+      </div>
+
+      <div v-if="editChecked">
+        <form @submit.prevent="editTask" class="flex flex-col">
+          <input
+            type="text"
+            v-model="titleEdited"
+            placeholder="Nuevo titulo"
+            class="p-2 m-2 border-2 rounded-full text-center placeholder-taLightMain"
+          />
+          <input
+            type="text"
+            v-model="descriptionEdited"
+            placeholder="Nueva descripcion"
+            class="p-2 m-2 border-2 rounded-full text-center placeholder-taLightMain"
+          />
+
+          <button
+            class="w-full mt-6 p-3 px-6 self-start text-sm text-white bg-taLightMain duration-200 border-transparent hover:bg-gray-500 hover:text-at-light-grey rounded-full"
+          >
+            Edit Task
+          </button>
+        </form>
+      </div>
     </div>
   </div>
 </template>
