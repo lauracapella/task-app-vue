@@ -6,7 +6,7 @@
     </div>
     <div class="max-w-screen-sm mx-auto px-4 py-10">
       <form
-        @submit.prevent="this.signIn()"
+        @submit.prevent="signIn"
         class="p-8 flex flex-col bg-grisClaro rounded-mb shadow-lg"
       >
         <div class="flex flex-col mb-2">
