@@ -1,6 +1,9 @@
 <template>
 <div class="max-w-screen-sm mx-auto px-4 py-10">
-  <div class="text-3xl text-ta-light-main mb-4">Sign In </div>
+   <div class="text-center bg-gray-100">
+    <h1 class="text-4xl pt-5 text-gray-500">Welcome to TaskApp</h1>
+    <h3 class="text-xl pt-3 text-gray-500">Sign In</h3>
+  </div>
    <form @submit.prevent="this.signIn()" class="p-8 flex flex-col bg-grisClaro rounded-mb shadow-lg">
      <div class="flex flex-col mb-2">
       <label for="emaillogin" class="mb-1 text-sm">Email</label>
