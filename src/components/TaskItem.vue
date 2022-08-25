@@ -2,17 +2,17 @@
   <div class="flex flex-col items-center">
     <div
       :class="{ completed_style: is_complete }"
-      class="text-center m-5 border-2block p-6 max-w-sm rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+      class="w-3/4 text-center m-5 border-2block p-6  rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
     >
       <h5
         @click="showToolsHandler"
-        class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-ellipsis overflow-hidden hover:underline hover:cursor-pointer hover:text-taLightMain"
       >
         {{ task.title }}
       </h5>
       <p
         @click="showToolsHandler"
-        class="font-normal text-gray-700 dark:text-gray-400"
+        class="font-normal text-gray-700 dark:text-gray-400 text-ellipsis overflow-hidden"
       >
         {{ task.description }}
       </p>
