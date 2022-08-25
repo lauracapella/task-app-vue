@@ -14,7 +14,7 @@
         @click="showToolsHandler"
         class="font-normal text-gray-700 dark:text-gray-400"
       >
-        {{ task.title }}
+        {{ task.description }}
       </p>
 
       <!-- <p v-if="is_complete">Is complete</p> -->
