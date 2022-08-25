@@ -1,13 +1,10 @@
 <template>
   <nav>
-    <!-- Desktop menu -->
     <div class="bg-taLightMain">
         <div class="flex justify-between">
-          <!-- Menu items -->
           <div class="flex-item center px-2 py-5 text-white font-semibold">
             TaskApp
           </div>
-         
           <!-- Login section   -->
           <div class="flex flex-item center px-2 py-5">
             <p class="mr-5 text-white">Welcome <span class="font-bold">{{removeEmailClient}}!</span>  </p>

@@ -87,5 +87,16 @@ Tasks
         - Styles to tasks
         - Edit tasks
         - toggle task
-        - refresh contents automatically
+        - refresh contents automatically / emits
+```
+
+### Thusday 25
+
+Tasks
+```sh
+        - Final styling
+        - Delete error message after 4 secs
+        - Deploy with vercel
+        - Format document
+
 ```

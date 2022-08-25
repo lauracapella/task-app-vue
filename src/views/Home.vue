@@ -1,32 +1,39 @@
 <template>
-  <Nav/>
+  <Nav />
 
   <div class="text-center bg-gray-100">
     <h1 class="text-4xl pt-5 text-gray-500">Add a new Task</h1>
-    <h3 class="text-xl pt-3 text-gray-500">Keep your life organized, prepare for a trip? Start here</h3>
-   <NewTask @add-task="addTask"/>
+    <h3 class="text-xl pt-3 text-gray-500">
+      Keep your life organized, prepare for a trip? Start here
+    </h3>
+    <NewTask @add-task="addTask" />
   </div>
 
   <div>
-    <TaskItem v-for="task in supabaseTasks" :key="task.id" :task="task" @add-toogle="addToggle" @delete-task="deleteTask" @edit-task="editTask" />
-    </div>
-  <Footer/>
-
+    <TaskItem
+      v-for="task in supabaseTasks"
+      :key="task.id"
+      :task="task"
+      @add-toogle="addToggle"
+      @delete-task="deleteTask"
+      @edit-task="editTask"
+    />
+  </div>
+  <Footer />
 </template>
 
 <script setup>
-import Nav from "../components/Nav.vue"
-import Footer from "../components/Footer.vue"
-import NewTask from "../components/NewTask.vue"
-import TaskItem from "../components/TaskItem.vue"
-import {ref} from "vue"; 
-import {useTaskStore} from "../stores/task.js"
+import Nav from "../components/Nav.vue";
+import Footer from "../components/Footer.vue";
+import NewTask from "../components/NewTask.vue";
+import TaskItem from "../components/TaskItem.vue";
+import { ref } from "vue";
+import { useTaskStore } from "../stores/task.js";
 
 const supabaseTasks = ref([]);
 
 const getTasks = async () => {
   supabaseTasks.value = await useTaskStore().fetchTasks();
-  //console.log('getTasks',  supabaseTasks.value)
 };
 
 getTasks();
@@ -42,8 +49,6 @@ const addToggle = async (is_complete, id) => {
   getTasks();
 };
 
-
-
 const deleteTask = async (id) => {
   await useTaskStore().deleteTask(id);
   getTasks();
@@ -52,12 +57,10 @@ const deleteTask = async (id) => {
 const editTask = async (task) => {
   const newTitle = task.newTitle;
   const newDescription = task.newDescription;
-  const taskId = task.oldIdValue.id
+  const taskId = task.oldIdValue.id;
   await useTaskStore().editTask(newTitle, newDescription, taskId);
   getTasks();
 };
-
-
 </script>
 
 <style></style>

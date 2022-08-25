@@ -5,8 +5,6 @@ import { useRouter } from "vue-router";
 import { useUserStore } from "./stores/user.js";
 import { ref } from "vue";
 
-
-
 const router = useRouter();
 const userStore = useUserStore();
 const { user } = storeToRefs(userStore);

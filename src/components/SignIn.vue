@@ -1,31 +1,47 @@
 <template>
-<div>
-<div class="text-center mt-5">
-    <h1 class="text-4xl pt-5 text-gray-500">Welcome to TaskApp</h1>
-    <h3 class="text-xl pt-3 text-gray-500">Sign In</h3>
-  </div>
-<div class="max-w-screen-sm mx-auto px-4 py-10">
-   
-   <form @submit.prevent="this.signIn()" class="p-8 flex flex-col bg-grisClaro rounded-mb shadow-lg">
-     <div class="flex flex-col mb-2">
-      <label for="emaillogin" class="mb-1 text-sm">Email</label>
-      <input type="text" v-model="email" id="emaillogin" required class="p-2 focus:outline-none">
-   </div>
-   <div class="flex flex-col mb-2">
-      <label for="passlogin" class="mb-1 text-sm">Password</label>
-        <input type="password" v-model="password" required id="passlogin" class="p-2 focus:outline-none">
+  <div>
+    <div class="text-center mt-5">
+      <h1 class="text-4xl pt-5 text-gray-500">Welcome to TaskApp</h1>
+      <h3 class="text-xl pt-3 text-gray-500">Sign In</h3>
+    </div>
+    <div class="max-w-screen-sm mx-auto px-4 py-10">
+      <form
+        @submit.prevent="this.signIn()"
+        class="p-8 flex flex-col bg-grisClaro rounded-mb shadow-lg"
+      >
+        <div class="flex flex-col mb-2">
+          <label for="emaillogin" class="mb-1 text-sm">Email</label>
+          <input
+            type="text"
+            v-model="email"
+            id="emaillogin"
+            required
+            class="p-2 focus:outline-none"
+          />
+        </div>
+        <div class="flex flex-col mb-2">
+          <label for="passlogin" class="mb-1 text-sm">Password</label>
+          <input
+            type="password"
+            v-model="password"
+            required
+            id="passlogin"
+            class="p-2 focus:outline-none"
+          />
+        </div>
+        <button
+          type="submit"
+          class="mt-6 py-2 px-6 self-start text-sm text-white bg-taLightMain duration-200 border-transparent hover:bg-gray-500 hover:text-at-light-grey font-bold rounded-full w-full"
+        >
+          Sign In
+        </button>
+      </form>
+      <div class="text-sm mt-6 text-center">
+        <PersonalRouter :route="route" :buttonText="buttonText" />
       </div>
-   <button type="submit" class="mt-6 py-2 px-6 self-start text-sm text-white bg-taLightMain duration-200  border-transparent hover:bg-gray-500  hover:text-at-light-grey font-bold rounded-full w-full">Sign In</button>
-
-  </form>
-   <div class="text-sm mt-6 text-center">
-    <PersonalRouter :route="route" :buttonText="buttonText" />
-   </div>
-</div>
-</div>
+    </div>
+  </div>
 </template>
-
-
 
 <script setup>
 import { ref, computed } from "vue";
@@ -37,7 +53,7 @@ import { storeToRefs } from "pinia";
 
 // Route Variables
 const route = "/auth/sign-up";
-const buttonText = "Do you want to register?";
+const buttonText = "Don't have an account yet? Register";
 
 // Input Fields
 const email = ref("");
@@ -66,7 +82,6 @@ const signIn = async () => {
   } catch (error) {
     // displays error message
     errorMsg.value = `Error: ${error.message}`;
-        console.log('login nain')
 
     // hides error message
     setTimeout(() => {
@@ -77,8 +92,6 @@ const signIn = async () => {
 </script>
 
 <style>
-
-
 .form {
   display: flex;
   flex-direction: column;
